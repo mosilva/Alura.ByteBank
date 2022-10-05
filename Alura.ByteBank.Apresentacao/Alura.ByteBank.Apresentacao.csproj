@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Alura.ByteBank.Aplicacao\Alura.ByteBank.Aplicacao.csproj" />
     <ProjectReference Include="..\Alura.ByteBank.Dados\Alura.ByteBank.Dados.csproj" />
     <ProjectReference Include="..\Alura.ByteBank.Domain\Alura.ByteBank.Dominio.csproj" />

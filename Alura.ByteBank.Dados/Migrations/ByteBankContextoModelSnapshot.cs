@@ -3,7 +3,10 @@ using System;
 using Alura.ByteBank.Dados.Contexto;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
 
 namespace Alura.ByteBank.Dados.Migrations
 {
@@ -14,8 +17,10 @@ namespace Alura.ByteBank.Dados.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.11");
+                .HasAnnotation("ProductVersion", "6.0.9")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Alura.ByteBank.Dominio.Entidades.Agencia", b =>
                 {
@@ -23,22 +28,24 @@ namespace Alura.ByteBank.Dados.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<string>("Endereco")
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("Identificador")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("agencia");
+                    b.ToTable("agencia", (string)null);
                 });
 
             modelBuilder.Entity("Alura.ByteBank.Dominio.Entidades.Cliente", b =>
@@ -47,24 +54,26 @@ namespace Alura.ByteBank.Dados.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("Identificador")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Profissao")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("cliente");
+                    b.ToTable("cliente", (string)null);
                 });
 
             modelBuilder.Entity("Alura.ByteBank.Dominio.Entidades.ContaCorrente", b =>
@@ -73,6 +82,8 @@ namespace Alura.ByteBank.Dados.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
                     b.Property<int?>("AgenciaId")
                         .HasColumnType("int");
 
@@ -80,16 +91,16 @@ namespace Alura.ByteBank.Dados.Migrations
                         .HasColumnType("int");
 
                     b.Property<Guid>("Identificador")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Numero")
                         .HasColumnType("int");
 
                     b.Property<Guid>("PixConta")
-                        .HasColumnType("char(36)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double>("Saldo")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -97,7 +108,7 @@ namespace Alura.ByteBank.Dados.Migrations
 
                     b.HasIndex("ClienteId");
 
-                    b.ToTable("conta_corrente");
+                    b.ToTable("conta_corrente", (string)null);
                 });
 
             modelBuilder.Entity("Alura.ByteBank.Dominio.Entidades.ContaCorrente", b =>

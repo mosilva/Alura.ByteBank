@@ -20,11 +20,11 @@ namespace Alura.ByteBank.Dominio.Entidades
             }
             set
             {
-               
-                if(this.ValidaCPF(value)==false)
-                {
-                    throw new FormatException("CPF inválido.");
-                }
+
+                //if (this.ValidaCPF(value) == false)
+                //{
+                //    throw new FormatException("CPF inválido.");
+                //}
                 _cpf = value;
             }
         }

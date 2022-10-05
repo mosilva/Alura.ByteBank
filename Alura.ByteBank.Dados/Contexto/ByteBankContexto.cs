@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 
+
 namespace Alura.ByteBank.Dados.Contexto
 {
     public class ByteBankContexto:DbContext
@@ -12,8 +13,9 @@ namespace Alura.ByteBank.Dados.Contexto
        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            string stringconexao = "server=localhost;DataBase=bytebankBD;Uid=root;Pwd=root";
-            optionsBuilder.UseMySql(stringconexao, ServerVersion.AutoDetect(stringconexao));
+            string stringconexao = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=CleanArchMvc;Integrated Security=True"; 
+            optionsBuilder.UseSqlServer(stringconexao);
+            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
