@@ -8,14 +8,14 @@ using Xunit.Abstractions;
 
 namespace Alura.ByteBank.Infrastructure.Tests
 {
-    public class ByteBankContextTest
+    public class ByteBankContextTest :IDisposable
     {
-        private ByteBankContexto _byteBankContexto;
+        private ByteBankContexto _sut;
         private ITestOutputHelper _testOutputHelper;
 
         public ByteBankContextTest(ITestOutputHelper testOutputHelper)
         {
-            _byteBankContexto = new ByteBankContexto();
+            _sut = new ByteBankContexto();
             _testOutputHelper = testOutputHelper;
         }
 
@@ -28,7 +28,7 @@ namespace Alura.ByteBank.Infrastructure.Tests
 
             try
             {
-                conectado = _byteBankContexto.Database.CanConnect();
+                conectado = _sut.Database.CanConnect();
                 _testOutputHelper.WriteLine("Connection working!");
             }
 
@@ -40,8 +40,10 @@ namespace Alura.ByteBank.Infrastructure.Tests
             Assert.True(conectado);
         }
 
-
-
+        public void Dispose()
+        {
+            
+        }
     }
 
 }
