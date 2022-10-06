@@ -39,6 +39,22 @@ namespace Alura.ByteBank.Infrastructure.Tests
 
         }
 
+        [Fact]
+        public void Adicionar_CreateClientValid_MustRegisterClient()
+        {
+            var client = new Cliente()
+            {
+                Nome = "Marcelo Oliveira",
+                CPF = "123.456.789-22",
+                Identificador = Guid.NewGuid(),
+                Profissao = "developer",
+            };
+
+            bool response = _sut.Adicionar(client);
+
+            Assert.True(response);
+        }
+
         public void Dispose()
         {
             _sut.Dispose();
