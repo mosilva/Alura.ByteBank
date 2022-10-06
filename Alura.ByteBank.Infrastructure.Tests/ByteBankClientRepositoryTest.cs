@@ -8,10 +8,11 @@ namespace Alura.ByteBank.Infrastructure.Tests
 {
     public class ByteBankClientRepositoryTest : IDisposable
     {
-        private readonly IClienteRepositorio _sut;
+        private readonly IClienteRepositorio? _sut;
         private ITestOutputHelper _testOutputHelper;
         public ByteBankClientRepositoryTest(ITestOutputHelper testOutputHelper)
         {
+
             var service = new ServiceCollection();
             service.AddTransient<IClienteRepositorio, ClienteRepositorio>();
             var provider = service.BuildServiceProvider();
@@ -26,13 +27,23 @@ namespace Alura.ByteBank.Infrastructure.Tests
             List<Cliente> clientList = _sut.ObterTodos();
 
             Assert.NotNull(clientList);
-
         }
 
+        [Theory]
+        [InlineData(1)]
+        public void ObterPorId_ValidRequestForId_ReturnEspecificClient(int id)
+        {
+            var client = _sut.ObterPorId(id);
+
+            Assert.NotNull(client);
+
+        }
 
         public void Dispose()
         {
-
+            _sut.Dispose();
         }
+
+
     }
 }
