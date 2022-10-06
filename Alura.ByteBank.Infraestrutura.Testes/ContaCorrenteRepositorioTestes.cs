@@ -53,7 +53,6 @@ namespace Alura.ByteBank.Infraestrutura.Testes
 
         [Theory]
         [InlineData(1)]
-        [InlineData(2)]
         public void TestaObterContasCorrentesPorVariosId(int id)
         {
             //Arrange
