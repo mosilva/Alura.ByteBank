@@ -1,9 +1,4 @@
 ﻿using Alura.ByteBank.Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Alura.ByteBank.Infraestrutura.Testes
 {
@@ -112,7 +107,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
             }
         };
 
-        public List<ContaCorrente> Contas{get { return contas; }}
+        public List<ContaCorrente> Contas { get { return contas; } }
 
         public bool AdicionarConta(ContaCorrente conta)
         {
@@ -126,7 +121,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
 
                 return false;
             }
-            
+
         }
 
         public bool AdicionarAgencia(Agencia agencia)
@@ -141,7 +136,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
 
                 return false;
             }
-            
+
         }
 
         public bool AdicionarCliente(Cliente cliente)
@@ -156,7 +151,7 @@ namespace Alura.ByteBank.Infraestrutura.Testes
 
                 return false;
             }
-            
+
         }
 
         public List<Agencia> BuscarAgencias()
@@ -173,6 +168,6 @@ namespace Alura.ByteBank.Infraestrutura.Testes
         {
             return this.Contas;
         }
-      
+
     }
 }
