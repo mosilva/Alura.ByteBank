@@ -26,7 +26,6 @@ namespace Alura.ByteBank.Infrastructure.Tests
         }
 
         [Fact]
-
         public void ObterPorId_InvalidAgencyId_ShouldThrowFormatException()
         {
             Assert.Throws<Exception>(
